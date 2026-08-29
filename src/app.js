@@ -1,4 +1,5 @@
 import { strings } from "./i18n.js";
+import { hydratePackShots } from "./pack.js";
 
 const LANG_KEY = "aps-lang";
 const STORE_KEY = "aps-intro";
@@ -190,3 +191,4 @@ bindLang();
 bindForms();
 apply(currentLang());
 greetFromQuery();
+hydratePackShots();
