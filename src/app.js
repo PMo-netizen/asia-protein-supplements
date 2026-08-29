@@ -61,6 +61,11 @@ function apply(lang) {
     if (typeof val === "string") el.setAttribute("aria-label", val);
   });
 
+  $$("[data-i18n-alt]").forEach((el) => {
+    const val = lookup(dict, el.getAttribute("data-i18n-alt"));
+    if (typeof val === "string") el.setAttribute("alt", val);
+  });
+
   $$('input[name="lang"]').forEach((el) => {
     el.value = lang;
   });
@@ -184,4 +189,4 @@ function greetFromQuery() {
 bindLang();
 bindForms();
 apply(currentLang());
-greetFromQuery();
+ greetFromQuery();
