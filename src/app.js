@@ -189,4 +189,4 @@ function greetFromQuery() {
 bindLang();
 bindForms();
 apply(currentLang());
- greetFromQuery();
+greetFromQuery();
