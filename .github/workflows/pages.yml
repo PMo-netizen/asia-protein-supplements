@@ -18,6 +18,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Decode indicative pack JPEGs
+        run: |
+          set -euo pipefail
+          mkdir -p public/images
+          shopt -s nullglob
+          for f in public/images/*.jpg.b64; do
+            out="${f%.b64}"
+            base64 -d "$f" > "$out"
+            echo "decoded ${out} $(wc -c < "$out") bytes"
+            rm -f "$f"
+          done
       - uses: actions/configure-pages@v5
         with:
           enablement: true
