@@ -1,11 +1,18 @@
 import { strings } from "./i18n.js";
 
 const LANG_KEY = "aps-lang";
-const STORE_KEY = "aps-waitlist";
+const STORE_KEY = "aps-intro";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MARKETS = new Set(["hk", "sg", "jp", "kr", "cn", "other"]);
 
 const $ = (sel, root = document) => root.querySelector(sel);
 const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
+
+function lookup(dict, path) {
+  let val = dict;
+  for (const key of path.split(".")) val = val?.[key];
+  return val;
+}
 
 function currentLang() {
   const saved = localStorage.getItem(LANG_KEY);
@@ -36,146 +43,26 @@ function apply(lang) {
   if (ogd) ogd.setAttribute("content", dict.metaDesc);
 
   $$("[data-i18n]").forEach((el) => {
-    const path = el.getAttribute("data-i18n").split(".");
-    let val = dict;
-    for (const key of path) val = val?.[key];
+    const val = lookup(dict, el.getAttribute("data-i18n"));
     if (typeof val === "string") el.textContent = val;
   });
 
   $$("[data-i18n-ph]").forEach((el) => {
-    const path = el.getAttribute("data-i18n-ph").split(".");
-    let val = dict;
-    for (const key of path) val = val?.[key];
+    const val = lookup(dict, el.getAttribute("data-i18n-ph"));
     if (typeof val === "string") el.setAttribute("placeholder", val);
   });
 
   $$("[data-i18n-aria]").forEach((el) => {
-    const path = el.getAttribute("data-i18n-aria").split(".");
-    let val = dict;
-    for (const key of path) val = val?.[key];
+    const val = lookup(dict, el.getAttribute("data-i18n-aria"));
     if (typeof val === "string") el.setAttribute("aria-label", val);
+  });
+
+  $$('input[name="lang"]').forEach((el) => {
+    el.value = lang;
   });
 
   $("#lang-en")?.setAttribute("aria-pressed", String(lang === "en"));
   $("#lang-zh")?.setAttribute("aria-pressed", String(lang === "zh"));
-
-  renderCards(dict);
-  renderSteps(dict);
-  renderClaims(dict);
-  renderMarkets(dict);
-  renderFaq(dict);
-}
-
-function renderCards(dict) {
-  const root = $("#what-cards");
-  if (!root) return;
-  root.innerHTML = dict.what.cards
-    .map(
-      (c) => `<article class="card card-accent">
-        <h3>${escapeHtml(c.h)}</h3>
-        <p>${escapeHtml(c.p)}</p>
-      </article>`
-    )
-    .join("");
-}
-
-function renderSteps(dict) {
-  const root = $("#why-steps");
-  if (!root) return;
-  root.innerHTML = dict.why.steps
-    .map(
-      (s) => `<article class="step">
-        <div class="step-mark" aria-hidden="true">${escapeHtml(s.n)}</div>
-        <div>
-          <h3>${escapeHtml(s.h)}</h3>
-          <p>${escapeHtml(s.p)}</p>
-        </div>
-      </article>`
-    )
-    .join("");
-}
-
-function renderClaims(dict) {
-  const say = $("#claims-say");
-  const not = $("#claims-not");
-  if (say) {
-    say.innerHTML = dict.claims.say.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
-  }
-  if (not) {
-    not.innerHTML = dict.claims.not.map((s) => `<li>${escapeHtml(s)}</li>`).join("");
-  }
-}
-
-function renderMarkets(dict) {
-  const path = $("#market-path");
-  if (path) {
-    const nodes = dict.markets.path;
-    path.innerHTML = nodes
-      .map((n, i) => {
-        const klass = i === 0 ? "first" : "later";
-        const label = i === 0 ? `${n}` : n;
-        const arr = i < nodes.length - 1 ? `<span class="arr" aria-hidden="true">→</span>` : "";
-        return `<span class="node ${klass}">${escapeHtml(label)}</span>${arr}`;
-      })
-      .join("");
-  }
-  const grid = $("#market-grid");
-  if (grid) {
-    grid.innerHTML = dict.markets.items
-      .map(
-        (m) => `<article class="market ${m.klass}">
-          <header>
-            <h3>${escapeHtml(m.h)}</h3>
-            <span class="tag">${escapeHtml(m.tag)}</span>
-          </header>
-          <p>${escapeHtml(m.p)}</p>
-        </article>`
-      )
-      .join("");
-  }
-}
-
-function renderFaq(dict) {
-  const root = $("#faq-list");
-  if (!root) return;
-  root.innerHTML = dict.faq.items
-    .map((item, i) => {
-      return `<div class="faq-item">
-        <button type="button" id="faq-btn-${i}" aria-expanded="false" aria-controls="faq-a-${i}">
-          <span>${escapeHtml(item.q)}</span>
-        </button>
-        <div class="faq-a" id="faq-a-${i}" role="region" hidden>${escapeHtml(item.a)}</div>
-      </div>`;
-    })
-    .join("");
-}
-
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
-}
-
-function bindFaq() {
-  $("#faq-list")?.addEventListener("click", (e) => {
-    const btn = e.target.closest("button[aria-expanded]");
-    if (!btn) return;
-    const item = btn.parentElement;
-    const panel = item.querySelector(".faq-a");
-    const open = btn.getAttribute("aria-expanded") === "true";
-    $$("#faq-list button[aria-expanded]").forEach((b) => {
-      b.setAttribute("aria-expanded", "false");
-      b.parentElement.querySelector(".faq-a").hidden = true;
-      b.parentElement.removeAttribute("open");
-    });
-    if (!open) {
-      btn.setAttribute("aria-expanded", "true");
-      panel.hidden = false;
-      item.setAttribute("open", "");
-    }
-  });
 }
 
 function readLocal() {
@@ -188,61 +75,92 @@ function readLocal() {
   }
 }
 
-function writeLocal(email, lang) {
+function writeLocal(row) {
   const list = readLocal();
-  const key = email.toLowerCase();
-  if (list.some((row) => row.email === key)) return "dup";
-  list.push({ email: key, lang, ts: new Date().toISOString() });
+  const key = row.email.toLowerCase();
+  if (list.some((item) => item.email === key)) return "dup";
+  list.push({ ...row, email: key, ts: new Date().toISOString() });
   localStorage.setItem(STORE_KEY, JSON.stringify(list));
   return "ok";
 }
 
 function setStatus(form, kind, message) {
-  const el = form.querySelector(".waitlist-status");
+  const el = form.querySelector(".form-status");
   if (!el) return;
-  el.className = `waitlist-status ${kind}`;
+  el.className = `form-status ${kind}`;
   el.textContent = message;
 }
 
-async function submitWaitlist(form) {
-  const dict = t();
-  const email = (form.querySelector('input[type="email"]')?.value || "").trim();
+function readFields(form) {
+  const name = (form.querySelector('[name="name"]')?.value || "").trim();
+  const company = (form.querySelector('[name="company"]')?.value || "").trim();
+  const market = (form.querySelector('[name="market"]')?.value || "").trim();
+  const email = (form.querySelector('[name="email"]')?.value || "").trim();
+  const note = (form.querySelector('[name="note"]')?.value || "").trim();
   const hp = form.querySelector(".hp")?.value || "";
-  if (hp) return;
-  if (!EMAIL_RE.test(email) || email.length > 254) {
-    setStatus(form, "err", dict.waitlistErr);
+  return { name, company, market, email, note, hp };
+}
+
+function valid(fields) {
+  if (fields.name.length < 1 || fields.name.length > 120) return false;
+  if (fields.company.length < 1 || fields.company.length > 160) return false;
+  if (!MARKETS.has(fields.market)) return false;
+  if (!EMAIL_RE.test(fields.email) || fields.email.length > 254) return false;
+  if (fields.note.length > 1000) return false;
+  return true;
+}
+
+async function submitIntro(form) {
+  const dict = t();
+  const fields = readFields(form);
+  if (fields.hp) return;
+  if (!valid(fields)) {
+    setStatus(form, "err", dict.formErr);
     return;
   }
 
   const lang = document.documentElement.dataset.lang || "en";
-  const local = writeLocal(email, lang);
+  const payload = {
+    name: fields.name,
+    company: fields.company,
+    market: fields.market,
+    email: fields.email,
+    note: fields.note,
+    lang,
+  };
+  const local = writeLocal(payload);
 
   try {
-    const res = await fetch("/api/waitlist", {
+    const res = await fetch("/api/intro", {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ email, lang }),
+      body: JSON.stringify(payload),
     });
-    const data = await res.json().catch(() => ({}));
-    if (res.status === 409 || data.status === "duplicate") {
-      setStatus(form, "ok", dict.waitlistDup);
+    const type = res.headers.get("content-type") || "";
+    const data = type.includes("application/json") ? await res.json().catch(() => null) : null;
+    if (!data) {
+      setStatus(form, "ok", local === "dup" ? dict.formDup : dict.formFail);
+    } else if (res.status === 409 || data.status === "duplicate") {
+      setStatus(form, "ok", dict.formDup);
     } else if (!res.ok) {
-      setStatus(form, "ok", dict.waitlistLocal);
+      setStatus(form, "ok", dict.formLocal);
     } else {
-      setStatus(form, "ok", dict.waitlistOk);
+      setStatus(form, "ok", dict.formOk);
     }
   } catch {
-    setStatus(form, "ok", local === "dup" ? dict.waitlistDup : dict.waitlistFail);
+    setStatus(form, "ok", local === "dup" ? dict.formDup : dict.formFail);
   }
 
   form.reset();
+  const langInput = form.querySelector('input[name="lang"]');
+  if (langInput) langInput.value = lang;
 }
 
-function bindWaitlist() {
-  $$(".waitlist-form").forEach((form) => {
+function bindForms() {
+  $$(".intro-form").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      submitWaitlist(form);
+      submitIntro(form);
     });
   });
 }
@@ -252,25 +170,14 @@ function bindLang() {
   $("#lang-zh")?.addEventListener("click", () => apply("zh"));
 }
 
-function bindHeader() {
-  const header = $(".site-header");
-  const onScroll = () => {
-    header?.classList.toggle("is-scrolled", window.scrollY > 8);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-}
-
 function greetFromQuery() {
   const params = new URLSearchParams(location.search);
-  if (params.get("joined") === "1") {
-    $$(".waitlist-form").forEach((form) => setStatus(form, "ok", t().waitlistOk));
+  if (params.get("sent") === "1") {
+    $$(".intro-form").forEach((form) => setStatus(form, "ok", t().formOk));
   }
 }
 
 bindLang();
-bindFaq();
-bindWaitlist();
-bindHeader();
+bindForms();
 apply(currentLang());
 greetFromQuery();
