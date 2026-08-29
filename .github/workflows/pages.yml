@@ -20,20 +20,29 @@ jobs:
       - uses: actions/checkout@v4
       - name: Decode indicative pack JPEGs
         run: |
-          set -euo pipefail
+          set -uo pipefail
           mkdir -p public/images
           shopt -s nullglob
           for stem in pack-tin pack-range use-pour shelf-tins; do
             whole="public/images/${stem}.jpg.b64"
             parts=( public/images/${stem}.jpg.b64.part* )
+            out="public/images/${stem}.jpg"
             if [[ -f "$whole" ]]; then
-              base64 -d "$whole" > "public/images/${stem}.jpg"
-              echo "decoded ${stem} $(wc -c < public/images/${stem}.jpg) bytes"
-              rm -f "$whole"
+              if base64 -d "$whole" > "$out" 2>/dev/null; then
+                echo "decoded ${stem} $(wc -c < "$out") bytes"
+                rm -f "$whole"
+              else
+                echo "skip incomplete ${stem} whole"
+                rm -f "$out"
+              fi
             elif ((${#parts[@]})); then
-              cat "${parts[@]}" | base64 -d > "public/images/${stem}.jpg"
-              echo "decoded ${stem} $(wc -c < public/images/${stem}.jpg) bytes"
-              rm -f "${parts[@]}"
+              if cat "${parts[@]}" | base64 -d > "$out" 2>/dev/null; then
+                echo "decoded ${stem} $(wc -c < "$out") bytes"
+                rm -f "${parts[@]}"
+              else
+                echo "skip incomplete ${stem} parts (${#parts[@]})"
+                rm -f "$out"
+              fi
             fi
           done
       - uses: actions/configure-pages@v5
