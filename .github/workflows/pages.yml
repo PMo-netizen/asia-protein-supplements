@@ -23,11 +23,18 @@ jobs:
           set -euo pipefail
           mkdir -p public/images
           shopt -s nullglob
-          for f in public/images/*.jpg.b64; do
-            out="${f%.b64}"
-            base64 -d "$f" > "$out"
-            echo "decoded ${out} $(wc -c < "$out") bytes"
-            rm -f "$f"
+          for stem in pack-tin pack-range use-pour shelf-tins; do
+            whole="public/images/${stem}.jpg.b64"
+            parts=( public/images/${stem}.jpg.b64.part* )
+            if [[ -f "$whole" ]]; then
+              base64 -d "$whole" > "public/images/${stem}.jpg"
+              echo "decoded ${stem} $(wc -c < public/images/${stem}.jpg) bytes"
+              rm -f "$whole"
+            elif ((${#parts[@]})); then
+              cat "${parts[@]}" | base64 -d > "public/images/${stem}.jpg"
+              echo "decoded ${stem} $(wc -c < public/images/${stem}.jpg) bytes"
+              rm -f "${parts[@]}"
+            fi
           done
       - uses: actions/configure-pages@v5
         with:
