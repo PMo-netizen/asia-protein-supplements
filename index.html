@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Asia Protein Supplements — novel-ingredient protein, Hong Kong</title>
+    <title>Asia Protein Supplements — for retail buyers and distributors, Hong Kong</title>
     <meta
       name="description"
-      content="Launching novel-ingredient protein supplements across Asia. Precision-fermented lactoferrin powder, sold as food in Hong Kong. Join the waitlist."
+      content="A Hong Kong company building a novel-ingredient protein line for Asian retail. For buyers and distributors. Request an intro call."
     />
-    <meta property="og:title" content="Asia Protein Supplements — novel-ingredient protein, Hong Kong" />
+    <meta property="og:title" content="Asia Protein Supplements — for retail buyers and distributors, Hong Kong" />
     <meta
       property="og:description"
-      content="Launching novel-ingredient protein supplements across Asia. Precision-fermented lactoferrin powder, sold as food in Hong Kong."
+      content="A Hong Kong company building a novel-ingredient protein line for Asian retail. For buyers and distributors. Request an intro call."
     />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#FBFBF9" />
@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/styles.css" />
@@ -28,9 +28,9 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Asia Protein Supplements",
-        "description": "Novel-ingredient protein supplements, sold as food. Hong Kong first.",
+        "description": "Hong Kong company building a novel-ingredient protein line for Asian retail buyers and distributors.",
         "areaServed": ["Hong Kong", "Singapore", "Japan", "South Korea", "China"],
-        "address": { "@type": "PostalAddress", "addressLocality": "Hong Kong" }
+        "address": { "@type": "PostalAddress", "addressLocality": "Hong Kong", "addressCountry": "HK" }
       }
     </script>
   </head>
@@ -39,24 +39,18 @@
 
     <header class="site-header">
       <a class="wordmark" href="#top" aria-label="Asia Protein Supplements">
-        <svg viewBox="0 0 48 48" aria-hidden="true">
-          <circle cx="20" cy="24" r="16" fill="#BCE2E7" />
-          <circle cx="30" cy="24" r="16" fill="#FFC553" fill-opacity="0.55" />
-          <circle cx="20" cy="24" r="16" fill="none" stroke="#1B474D" stroke-width="0.6" stroke-opacity="0.35" />
-        </svg>
+        <span class="mark" aria-hidden="true"></span>
         <span class="wordmark-text">
           <strong>Asia Protein</strong>
           <span>Supplements</span>
         </span>
       </a>
-      <nav aria-label="Primary">
-        <ul class="nav-links">
-          <li><a href="#what" data-i18n="nav.what">The powder</a></li>
-          <li><a href="#ingredient" data-i18n="nav.why">The ingredient</a></li>
-          <li><a href="#claims" data-i18n="nav.claims">Claims</a></li>
-          <li><a href="#markets" data-i18n="nav.markets">Markets</a></li>
-          <li><a href="#founder" data-i18n="nav.founder">Founder</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <nav class="site-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#line" data-i18n="nav.line">The line</a></li>
+          <li><a href="#partners" data-i18n="nav.partners">Partners</a></li>
+          <li><a href="#meet" data-i18n="nav.meet">Why meet</a></li>
+          <li><a href="#intro" data-i18n="nav.intro">Intro call</a></li>
         </ul>
       </nav>
       <div class="header-actions">
@@ -64,250 +58,273 @@
           <button type="button" id="lang-en" aria-pressed="true">EN</button>
           <button type="button" id="lang-zh" aria-pressed="false">繁</button>
         </div>
-        <a class="btn btn-primary btn-header" href="#waitlist" data-i18n="cta">Join the waitlist</a>
+        <a class="btn btn-primary btn-header" href="#intro" data-i18n="cta">Request an intro call</a>
       </div>
     </header>
 
     <main id="main">
       <section class="hero" id="top">
-        <div class="wrap hero-grid">
-          <div class="hero-copy">
-            <p class="kicker reveal d1" data-i18n="hero.kicker">Asia Protein Supplements · Hong Kong</p>
-            <h1 class="reveal d2" data-i18n="hero.h1">Launching novel-ingredient protein supplements across Asia.</h1>
-            <p class="lede reveal d3" data-i18n="hero.lede">
-              Precision-fermented lactoferrin. A powder, sold as food — Traditional Chinese and English on the label. Hong Kong first, then the region.
-            </p>
-
-            <dl class="hero-spec reveal d4">
-              <div>
-                <dt data-i18n="hero.specFormatK">Format</dt>
-                <dd data-i18n="hero.specFormatV">Powder</dd>
-              </div>
-              <div>
-                <dt data-i18n="hero.specSoldK">Sold as</dt>
-                <dd data-i18n="hero.specSoldV">Food</dd>
-              </div>
-              <div>
-                <dt data-i18n="hero.specOriginK">Origin</dt>
-                <dd data-i18n="hero.specOriginV">Precision fermentation</dd>
-              </div>
-              <div>
-                <dt data-i18n="hero.specMarketK">First market</dt>
-                <dd data-i18n="hero.specMarketV">Hong Kong</dd>
-              </div>
-            </dl>
-
-            <form class="waitlist waitlist-form reveal d4" id="waitlist" action="/api/waitlist" method="post">
-              <div class="waitlist-row">
-                <label class="visually-hidden" for="email-hero" data-i18n="hero.emailPh">Email address</label>
-                <input
-                  id="email-hero"
-                  name="email"
-                  type="email"
-                  required
-                  autocomplete="email"
-                  maxlength="254"
-                  data-i18n-ph="hero.emailPh"
-                  placeholder="Email address"
-                />
-                <input class="hp" name="website" tabindex="-1" autocomplete="off" />
-                <button class="btn btn-primary" type="submit" data-i18n="cta">Join the waitlist</button>
-              </div>
-              <p class="waitlist-note" data-i18n="hero.note">Launch notes only. We will not sell or share this address.</p>
-              <p class="waitlist-status" role="status" aria-live="polite"></p>
-            </form>
-            <p class="disclaimer-inline" data-i18n="hero.disclaimer">
-              Any structure/function line on this page describes a nutrient’s role in the body. This is food, not a medicine. We stay with the three sentences listed under Claims.
-            </p>
-          </div>
-
-          <div class="hero-art reveal d3" aria-hidden="true">
-            <svg class="blob-art" viewBox="0 0 480 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="292" cy="268" r="168" fill="#BCE2E7" fill-opacity="0.7" />
-              <circle cx="198" cy="214" r="148" fill="#FFC553" fill-opacity="0.28" />
-              <circle cx="198" cy="214" r="148" stroke="#D4D1CA" stroke-width="0.8" />
-              <circle cx="292" cy="268" r="168" stroke="#1B474D" stroke-opacity="0.18" stroke-width="0.8" />
-              <path
-                d="M86 302 C 140 210, 186 168, 236 188 C 292 210, 286 292, 338 318 C 392 346, 430 300, 404 248"
-                stroke="#01696F"
-                stroke-width="1.4"
-                stroke-linecap="round"
-              />
-              <path
-                d="M108 248 C 168 300, 214 332, 268 300 C 322 268, 340 210, 392 198"
-                stroke="#1B474D"
-                stroke-width="1.1"
-                stroke-linecap="round"
-                stroke-dasharray="3 7"
-                opacity="0.7"
-              />
-              <circle cx="236" cy="188" r="5" fill="#01696F" />
-              <circle cx="338" cy="318" r="4" fill="#A84B2F" />
-              <circle cx="268" cy="300" r="3.5" fill="#FFC553" />
-              <text x="64" y="72" fill="#7A7974" font-size="11" font-family="Outfit, sans-serif" letter-spacing="3.2">LACTOFERRIN · ~80 kDa</text>
-              <text x="64" y="92" fill="#28251D" font-size="22" font-family="Instrument Serif, serif">iron-binding glycoprotein</text>
-            </svg>
-          </div>
-          <div>
-            <div class="steps" id="why-steps"></div>
-            <p class="science-note" data-i18n="why.note">Accuracy rule. Keep the science intact. No analogies that overstate what fermentation does, and no borrowed clinical halo. One ingredient, described as it is.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="what">
-        <div class="wrap split">
-          <div class="split-intro">
-            <p class="kicker"><span class="num" data-i18n="what.num">01</span><span data-i18n="what.kicker">What it is</span></p>
-            <h2 data-i18n="what.h2">A named protein, sold as food.</h2>
-            <p data-i18n="what.lede">
-              Asia Protein Supplements is a Hong Kong project: a novel-ingredient protein supplement, initially a powder, built for direct-to-consumer and selected retail. It is not a drug.
-            </p>
-          </div>
-          <div class="card-grid" id="what-cards"></div>
-        </div>
-      </section>
-
-      <section class="section" id="ingredient">
-        <div class="wrap split">
-          <div class="split-intro">
-            <p class="kicker"><span class="num" data-i18n="why.num">02</span><span data-i18n="why.kicker">Why this ingredient</span></p>
-            <h2 data-i18n="why.h2">Precision fermentation, without the mythology.</h2>
-            <p data-i18n="why.lede">
-              Most protein powders start from the same commodity stream. We start from a protein that has a name, a fold, and a production method we can describe without theatre.
-            </p>
-            <svg viewBox="0 0 360 200" style="margin-top:2rem;width:min(100%,22rem)" aria-hidden="true">
-              <rect x="8" y="48" width="88" height="110" rx="44" fill="none" stroke="#1B474D" stroke-width="1.2" />
-              <rect x="28" y="68" width="48" height="70" rx="24" fill="#BCE2E7" fill-opacity="0.7" />
-              <text x="52" y="186" text-anchor="middle" fill="#7A7974" font-size="10" font-family="Outfit, sans-serif" letter-spacing="1.5">HOST</text>
-              <path d="M108 103 H 148" stroke="#01696F" stroke-width="1.1" marker-end="url(#arr)" />
-              <circle cx="188" cy="103" r="42" fill="#F7F6F2" stroke="#01696F" stroke-width="1.2" />
-              <circle cx="188" cy="103" r="22" fill="#BCE2E7" />
-              <circle cx="188" cy="103" r="7" fill="#01696F" />
-              <text x="188" y="186" text-anchor="middle" fill="#7A7974" font-size="10" font-family="Outfit, sans-serif" letter-spacing="1.5">EXPRESS</text>
-              <path d="M242 103 H 282" stroke="#01696F" stroke-width="1.1" />
-              <ellipse cx="318" cy="103" rx="28" ry="40" fill="#FFC553" fill-opacity="0.35" stroke="#1B474D" stroke-width="1.2" />
-              <text x="318" y="186" text-anchor="middle" fill="#7A7974" font-size="10" font-family="Outfit, sans-serif" letter-spacing="1.5">ISOLATE</text>
-            </svg>
-          </div>
-          <div>
-            <div class="steps" id="why-steps"></div>
-            <p class="science-note" data-i18n="why.note">Accuracy rule. Keep the science intact. No analogies that overstate what fermentation does, and no borrowed clinical halo. One ingredient, described as it is.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="claims">
         <div class="wrap">
-          <p class="kicker"><span class="num" data-i18n="claims.num">03</span><span data-i18n="claims.kicker">What we will and will not claim</span></p>
-          <h2 data-i18n="claims.h2">Three sentences. That is the pack.</h2>
-          <p class="lede" data-i18n="claims.lede">
-            We stay in nutrient-content and structure/function language. Disease claims turn food into an unregistered drug in every market we intend to enter.
+          <p class="loc" data-i18n="hero.loc">Hong Kong</p>
+          <h1 data-i18n="hero.h1">A Hong Kong company building a protein line for Asian retail.</h1>
+          <p class="lede" data-i18n="hero.lede">
+            Asia Protein Supplements develops premium novel-ingredient protein products, sold as food. We speak with retail buyers and distributors — chain retail, regional wholesale, and China cross-border platforms — not with shoppers.
           </p>
-          <div class="claims-grid">
-            <article class="claim-col say">
-              <header>
-                <h3 data-i18n="claims.sayH">We will say</h3>
-                <span class="pill pill-ok" data-i18n="claims.sayKicker">Tier 1–2</span>
-              </header>
-              <ol id="claims-say"></ol>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#intro" data-i18n="cta">Request an intro call</a>
+            <a class="btn btn-ghost" href="#partners" data-i18n="hero.secondary">How we work with partners</a>
+          </div>
+          <ul class="mast">
+            <li data-i18n="hero.mast1">Sold as food</li>
+            <li data-i18n="hero.mast2">Traditional Chinese and English on pack</li>
+            <li data-i18n="hero.mast3">Trade enquiries only</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="line">
+        <div class="wrap grid-prose">
+          <div>
+            <p class="eyebrow" data-i18n="line.eyebrow">The line</p>
+            <h2 data-i18n="line.h2">A range in development, not a shopper listing.</h2>
+            <p data-i18n="line.p1">
+              We are building a line of premium protein products around novel ingredients. Precision fermentation and related biotech routes are how we source specific proteins — a supply capability, not a product name. Formats and SKUs will be confirmed with partners.
+            </p>
+            <p data-i18n="line.p2">
+              The products are food. Packs are written for Hong Kong labelling: Traditional Chinese and English. We do not print a function claim a retail compliance desk cannot stand behind.
+            </p>
+            <p class="science" data-i18n="line.science">
+              A named protein can be expressed by a microbial host, isolated, and formulated as food. That is the method. We keep the description to what the process actually does, and we keep pack language inside what the ingredient file can support.
+            </p>
+          </div>
+          <dl class="spec">
+            <div>
+              <dt data-i18n="line.spec1k">Category</dt>
+              <dd data-i18n="line.spec1v">Premium novel-ingredient protein</dd>
+            </div>
+            <div>
+              <dt data-i18n="line.spec2k">Sold as</dt>
+              <dd data-i18n="line.spec2v">Food</dd>
+            </div>
+            <div>
+              <dt data-i18n="line.spec3k">Labels</dt>
+              <dd data-i18n="line.spec3v">Traditional Chinese + English</dd>
+            </div>
+            <div>
+              <dt data-i18n="line.spec4k">Sourcing</dt>
+              <dd data-i18n="line.spec4v">Precision fermentation / biotech origin</dd>
+            </div>
+            <div>
+              <dt data-i18n="line.spec5k">House</dt>
+              <dd data-i18n="line.spec5v">Hong Kong, founder-led</dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="section section-wash" id="partners">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="partners.eyebrow">Partners</p>
+          <div class="section-head">
+            <h2 data-i18n="partners.h2">What we bring to a buyer or distributor.</h2>
+            <p class="lede" data-i18n="partners.lede">
+              Hong Kong is the first market. Singapore, Japan, and Korea follow as the range is ready. Mainland China opens through cross-border e-commerce as a beachhead — a channel, not a claim that domestic registration is already in hand.
+            </p>
+          </div>
+
+          <div class="offer-grid">
+            <article>
+              <h3 data-i18n="partners.retailH">For retailers</h3>
+              <p data-i18n="partners.retailP">
+                A food-positioned line with bilingual packs prepared for Hong Kong shelves, and a regional sequence so later markets do not fight the first listing. Suitable for chain grocery and drugstore buyers who already run a protein set.
+              </p>
             </article>
-            <article class="claim-col not">
-              <header>
-                <h3 data-i18n="claims.notH">We will not say</h3>
-                <span class="pill pill-no" data-i18n="claims.notKicker">Never</span>
-              </header>
-              <ul id="claims-not"></ul>
+            <article>
+              <h3 data-i18n="partners.distH">For distributors</h3>
+              <p data-i18n="partners.distP">
+                A founder-led counterpart for assortment, claims, and timing. One house to speak with on pack copy, ingredient files, and when a market actually opens — rather than a remote brand team handing over a finished imported SKU.
+              </p>
             </article>
           </div>
-          <p class="claim-rule"><span data-i18n="claims.ruleK">House rule</span><span data-i18n="claims.rule">No file = no claim.</span></p>
+
+          <ol class="markets">
+            <li>
+              <span class="m-code">HK</span>
+              <div>
+                <h3 data-i18n="partners.hkH">Hong Kong</h3>
+                <p data-i18n="partners.hkP">First market. Sold as food. The listing we will prove before we ask a partner to carry it further.</p>
+              </div>
+            </li>
+            <li>
+              <span class="m-code">SG</span>
+              <div>
+                <h3 data-i18n="partners.sgH">Singapore</h3>
+                <p data-i18n="partners.sgP">Next. The same line, prepared for Singapore retail once Hong Kong is set.</p>
+              </div>
+            </li>
+            <li>
+              <span class="m-code">JP</span>
+              <div>
+                <h3 data-i18n="partners.jpH">Japan</h3>
+                <p data-i18n="partners.jpP">Later. Pack and claims written for the Japanese trade, not translated at the last mile.</p>
+              </div>
+            </li>
+            <li>
+              <span class="m-code">KR</span>
+              <div>
+                <h3 data-i18n="partners.krH">Korea</h3>
+                <p data-i18n="partners.krP">Later. Same order of work: the range, then the market, then the conversation with local partners.</p>
+              </div>
+            </li>
+            <li>
+              <span class="m-code">CN</span>
+              <div>
+                <h3 data-i18n="partners.cnH">China</h3>
+                <p data-i18n="partners.cnP">Cross-border e-commerce first, so the line can sit on Tmall Global, JD Worldwide, and related platforms while general trade remains a later discussion.</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <section class="section" id="markets">
-        <div class="wrap">
-          <p class="kicker"><span class="num" data-i18n="markets.num">04</span><span data-i18n="markets.kicker">Made for Asia, launched in Hong Kong</span></p>
-          <h2 data-i18n="markets.h2">Hong Kong first. Then the region. Not the West.</h2>
-          <p class="lede" data-i18n="markets.lede">
-            The sequence is locked: Hong Kong → Singapore → Japan → Korea, with mainland China as a parallel cross-border beachhead. The EU and the US are not launch markets on this page.
-          </p>
-          <p class="path" id="market-path" aria-label="HK to SG to JP to KR to CN"></p>
-          <div class="market-grid" id="market-grid"></div>
-          <aside class="cbec-note">
-            <h3 data-i18n="markets.cbecH">China, without pretending we have Blue Hat</h3>
-            <p data-i18n="markets.cbecP">
-              Cross-border e-commerce is a duty-light, registration-light channel for foreign brands selling to mainland consumers via bonded warehouses.
-            </p>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section section-alt" id="founder">
-        <div class="wrap">
-          <div class="founder-panel">
-            <div class="portrait-absence" aria-hidden="true"></div>
-            <p class="kicker"><span class="num" data-i18n="founder.num">05</span><span data-i18n="founder.kicker">Founder</span></p>
-            <h2 data-i18n="founder.h2">One person. Hong Kong. Cosmetics, then biotech.</h2>
-            <p class="founder-quote" data-i18n="founder.quote">Treat regulatory as the first design input, not the last gate.</p>
-            <p data-i18n="founder.p">
-              Asia Protein Supplements is being built by a Hong Kong solo founder with a background in cosmetics and biotech. There is no named bio on this page, and no portrait — the work is the point.
+      <section class="section" id="meet">
+        <div class="wrap grid-prose">
+          <div>
+            <p class="eyebrow" data-i18n="meet.eyebrow">Why meet</p>
+            <h2 data-i18n="meet.h2">Three reasons to take the call.</h2>
+            <p data-i18n="meet.lede">
+              We are not pitching a finished shopper brand. We are asking for a short conversation with people who already buy or distribute food in this region.
             </p>
           </div>
+          <ol class="reasons">
+            <li>
+              <span class="r-n" aria-hidden="true">1</span>
+              <div>
+                <h3 data-i18n="meet.r1h">Founder-led Hong Kong company</h3>
+                <p data-i18n="meet.r1p">Cosmetics and biotech background. The person on the call is the person who signs pack copy. There is no remote brand committee between you and the line.</p>
+              </div>
+            </li>
+            <li>
+              <span class="r-n" aria-hidden="true">2</span>
+              <div>
+                <h3 data-i18n="meet.r2h">Ingredient discipline, sold as food</h3>
+                <p data-i18n="meet.r2p">We stay inside language a retail compliance desk can accept. Novel ingredients are chosen with that constraint in mind, not added after the campaign is written.</p>
+              </div>
+            </li>
+            <li>
+              <span class="r-n" aria-hidden="true">3</span>
+              <div>
+                <h3 data-i18n="meet.r3h">Built for bilingual Asia retail</h3>
+                <p data-i18n="meet.r3p">Traditional Chinese and English from the first pack. The line is designed for shelves and platforms in this region — Hong Kong first, then Singapore, Japan, Korea, and China cross-border.</p>
+              </div>
+            </li>
+          </ol>
         </div>
       </section>
 
-      <section class="section" id="faq">
-        <div class="wrap-narrow">
-          <p class="kicker"><span class="num" data-i18n="faq.num">06</span><span data-i18n="faq.kicker">FAQ</span></p>
-          <h2 data-i18n="faq.h2">Before you write to us.</h2>
-          <div class="faq-list" id="faq-list"></div>
+      <section class="section section-intro" id="intro">
+        <div class="wrap grid-intro">
+          <div class="intro-copy">
+            <p class="eyebrow" data-i18n="intro.eyebrow">Intro call</p>
+            <h2 data-i18n="intro.h2">Request a conversation.</h2>
+            <p data-i18n="intro.lede">
+              Name, company, market, and an email. We will write back to arrange a short call. There is no booking link on this page yet.
+            </p>
+          </div>
+          <form class="intro-form" id="intro-form" action="/api/intro" method="post">
+            <div class="field">
+              <label for="name-main" data-i18n="form.name">Name</label>
+              <input id="name-main" name="name" type="text" required autocomplete="name" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="company-main" data-i18n="form.company">Company</label>
+              <input id="company-main" name="company" type="text" required autocomplete="organization" maxlength="160" />
+            </div>
+            <div class="field">
+              <label for="market-main" data-i18n="form.market">Market of interest</label>
+              <select id="market-main" name="market" required>
+                <option value="" disabled selected data-i18n="form.marketPh">Select a market</option>
+                <option value="hk" data-i18n="form.mHk">Hong Kong</option>
+                <option value="sg" data-i18n="form.mSg">Singapore</option>
+                <option value="jp" data-i18n="form.mJp">Japan</option>
+                <option value="kr" data-i18n="form.mKr">Korea</option>
+                <option value="cn" data-i18n="form.mCn">China (cross-border e-commerce)</option>
+                <option value="other" data-i18n="form.mOther">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="email-main" data-i18n="form.email">Email</label>
+              <input id="email-main" name="email" type="email" required autocomplete="email" maxlength="254" />
+            </div>
+            <div class="field">
+              <label for="note-main"><span data-i18n="form.note">Note</span> <span class="opt" data-i18n="form.optional">(optional)</span></label>
+              <textarea id="note-main" name="note" rows="3" maxlength="1000" data-i18n-ph="form.notePh" placeholder="Shelf set, territory, or timing — only if useful."></textarea>
+            </div>
+            <input class="hp" name="website" tabindex="-1" autocomplete="off" />
+            <input type="hidden" name="lang" value="en" />
+            <button class="btn btn-primary btn-block" type="submit" data-i18n="cta">Request an intro call</button>
+            <p class="form-note" data-i18n="form.privacy">Used only to arrange a call. We will not sell this information.</p>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer" id="footer">
-      <div class="wrap footer-grid">
-        <div class="footer-brand">
-          <a class="wordmark" href="#top" aria-label="Asia Protein Supplements">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <circle cx="20" cy="24" r="16" fill="#BCE2E7" />
-              <circle cx="30" cy="24" r="16" fill="#FFC553" fill-opacity="0.55" />
-            </svg>
+    <footer class="site-footer">
+      <div class="wrap footer-top">
+        <div>
+          <a class="wordmark wordmark-foot" href="#top" aria-label="Asia Protein Supplements">
+            <span class="mark" aria-hidden="true"></span>
             <span class="wordmark-text">
               <strong>Asia Protein</strong>
               <span>Supplements</span>
             </span>
           </a>
-          <p class="kicker" style="margin-top:2rem" data-i18n="footer.kicker">Waitlist</p>
-          <h2 data-i18n="footer.h2">Be first in Hong Kong.</h2>
-          <p data-i18n="footer.blurb">A short note when the powder is ready. Nothing else.</p>
+          <p class="footer-blurb" data-i18n="footer.blurb">Hong Kong. A protein line for the Asian trade.</p>
         </div>
-        <form class="waitlist waitlist-form" action="/api/waitlist" method="post">
-          <div class="waitlist-row">
-            <label class="visually-hidden" for="email-footer" data-i18n="hero.emailPh">Email address</label>
-            <input
-              id="email-footer"
-              name="email"
-              type="email"
-              required
-              autocomplete="email"
-              maxlength="254"
-              data-i18n-ph="hero.emailPh"
-              placeholder="Email address"
-            />
-            <input class="hp" name="website" tabindex="-1" autocomplete="off" />
-            <button class="btn btn-primary" type="submit" data-i18n="cta">Join the waitlist</button>
+        <form class="intro-form intro-form-foot" id="intro-form-foot" action="/api/intro" method="post">
+          <p class="footer-form-title" data-i18n="footer.formTitle">Request an intro call</p>
+          <div class="field">
+            <label for="name-foot" data-i18n="form.name">Name</label>
+            <input id="name-foot" name="name" type="text" required autocomplete="name" maxlength="120" />
           </div>
-          <p class="waitlist-status" role="status" aria-live="polite"></p>
+          <div class="field">
+            <label for="company-foot" data-i18n="form.company">Company</label>
+            <input id="company-foot" name="company" type="text" required autocomplete="organization" maxlength="160" />
+          </div>
+          <div class="field">
+            <label for="market-foot" data-i18n="form.market">Market of interest</label>
+            <select id="market-foot" name="market" required>
+              <option value="" disabled selected data-i18n="form.marketPh">Select a market</option>
+              <option value="hk" data-i18n="form.mHk">Hong Kong</option>
+              <option value="sg" data-i18n="form.mSg">Singapore</option>
+              <option value="jp" data-i18n="form.mJp">Japan</option>
+              <option value="kr" data-i18n="form.mKr">Korea</option>
+              <option value="cn" data-i18n="form.mCn">China (cross-border e-commerce)</option>
+              <option value="other" data-i18n="form.mOther">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="email-foot" data-i18n="form.email">Email</label>
+            <input id="email-foot" name="email" type="email" required autocomplete="email" maxlength="254" />
+          </div>
+          <div class="field">
+            <label for="note-foot"><span data-i18n="form.note">Note</span> <span class="opt" data-i18n="form.optional">(optional)</span></label>
+            <textarea id="note-foot" name="note" rows="2" maxlength="1000" data-i18n-ph="form.notePh" placeholder="Shelf set, territory, or timing — only if useful."></textarea>
+          </div>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="lang" value="en" />
+          <button class="btn btn-primary btn-block" type="submit" data-i18n="cta">Request an intro call</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
       <div class="wrap">
-        <div class="footer-legal" data-i18n="footer.legal">
-          Food, not medicine. Asia Protein Supplements is not intended to diagnose, treat, cure, or prevent disease. Sold as food in Hong Kong under Cap. 132 / 132V. Structure/function statements have not been evaluated as drugs. This site is a planning page, not jurisdiction-specific legal advice.
-        </div>
+        <p class="footer-legal" data-i18n="footer.legal">
+          Food, not medicine. Asia Protein Supplements products are not intended to diagnose, treat, cure, or prevent disease. Sold as food in Hong Kong. This page is for trade enquiries and is not legal advice for any jurisdiction.
+        </p>
         <div class="footer-meta">
           <span data-i18n="footer.copy">Asia Protein Supplements · Hong Kong</span>
-          <span data-i18n="footer.made">Traditional Chinese + English · Powder · Food</span>
+          <span data-i18n="footer.made">Traditional Chinese + English · Food · Trade</span>
         </div>
       </div>
     </footer>
