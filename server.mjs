@@ -134,14 +134,16 @@ function serveStatic(req, res, urlPath) {
     res.end("Forbidden");
     return;
   }
-  if (!path.extname(file) && fs.existsSync(file) && fs.statSync(file).isDirectory()) {
-    file = path.join(file, "index.html");
+  if (!path.extname(file)) {
+    const htmlFile = file + ".html";
+    if (fs.existsSync(htmlFile)) {
+      file = htmlFile;
+    } else if (fs.existsSync(file) && fs.statSync(file).isDirectory()) {
+      file = path.join(file, "index.html");
+    }
   }
   fs.readFile(file, (err, data) => {
     if (err) {
-      if (urlPath !== "/" && !path.extname(urlPath)) {
-        return serveStatic(req, res, "/index.html");
-      }
       res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
       res.end("Not found");
       return;
@@ -180,7 +182,7 @@ function handleIntro(req, res, body) {
     EMAIL_RE.test(fields.email);
   if (!ok) {
     if (wantsHtml(req)) {
-      res.writeHead(302, { Location: "/?sent=0" });
+      res.writeHead(302, { Location: "/intro.html?sent=0" });
       res.end();
       return;
     }
@@ -189,7 +191,7 @@ function handleIntro(req, res, body) {
   }
   const result = addIntro(fields);
   if (wantsHtml(req)) {
-    res.writeHead(302, { Location: "/?sent=1" });
+    res.writeHead(302, { Location: "/intro.html?sent=1" });
     res.end();
     return;
   }

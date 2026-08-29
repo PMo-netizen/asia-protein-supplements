@@ -34,13 +34,17 @@ function apply(lang) {
   document.documentElement.dataset.lang = lang;
   localStorage.setItem(LANG_KEY, lang);
 
-  document.title = dict.metaTitle;
+  const page = document.documentElement.dataset.page || "home";
+  const pageMeta = dict.pages?.[page];
+  const title = pageMeta?.title || dict.metaTitle;
+  const desc = pageMeta?.desc || dict.metaDesc;
+  document.title = title;
   const meta = $('meta[name="description"]');
-  if (meta) meta.setAttribute("content", dict.metaDesc);
+  if (meta) meta.setAttribute("content", desc);
   const ogt = $('meta[property="og:title"]');
-  if (ogt) ogt.setAttribute("content", dict.metaTitle);
+  if (ogt) ogt.setAttribute("content", title);
   const ogd = $('meta[property="og:description"]');
-  if (ogd) ogd.setAttribute("content", dict.metaDesc);
+  if (ogd) ogd.setAttribute("content", desc);
 
   $$("[data-i18n]").forEach((el) => {
     const val = lookup(dict, el.getAttribute("data-i18n"));
