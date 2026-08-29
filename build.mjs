@@ -32,5 +32,13 @@ copy(path.join(root, "src", "styles.css"), path.join(dist, "src", "styles.css"))
 copy(path.join(root, "src", "app.js"), path.join(dist, "src", "app.js"));
 copy(path.join(root, "src", "i18n.js"), path.join(dist, "src", "i18n.js"));
 copy(path.join(root, "public", "favicon.svg"), path.join(dist, "public", "favicon.svg"));
+const imgDir = path.join(root, "public", "images");
+if (fs.existsSync(imgDir)) {
+  for (const name of fs.readdirSync(imgDir)) {
+    if (name.endsWith(".jpg") || name.endsWith(".jpeg") || name.endsWith(".svg")) {
+      copy(path.join(imgDir, name), path.join(dist, "public", "images", name));
+    }
+  }
+}
 copy(path.join(root, ".nojekyll"), path.join(dist, ".nojekyll"));
 console.log("Built to dist/");
