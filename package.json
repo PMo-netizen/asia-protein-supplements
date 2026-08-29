@@ -1,8 +1,8 @@
 {
   "name": "asia-protein-supplements",
   "private": true,
-  "version": "1.0.0",
-  "description": "Consumer landing page for Asia Protein Supplements — Hong Kong novel-ingredient protein, sold as food.",
+  "version": "1.1.0",
+  "description": "Trade site for Asia Protein Supplements — Hong Kong novel-ingredient protein line for retail buyers and distributors.",
   "type": "module",
   "scripts": {
     "dev": "node server.mjs",
