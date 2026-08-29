@@ -1,7 +1,7 @@
 {
   "name": "asia-protein-supplements",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Trade site for Asia Protein Supplements — Hong Kong novel-ingredient protein line for retail buyers and distributors.",
   "type": "module",
   "scripts": {
