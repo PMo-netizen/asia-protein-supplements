@@ -23,28 +23,31 @@ jobs:
           set -uo pipefail
           mkdir -p public/images
           shopt -s nullglob
-          for stem in pack-tin pack-range use-pour shelf-tins; do
-            whole="public/images/${stem}.jpg.b64"
-            parts=( public/images/${stem}.jpg.b64.part* )
-            out="public/images/${stem}.jpg"
+          decode() {
+            local stem="$1"
+            local out="public/images/${stem}.jpg"
+            local whole="public/images/${stem}.jpg.b64"
+            local parts=( public/images/${stem}.jpg.b64.part* )
+            local src
             if [[ -f "$whole" ]]; then
-              if base64 -d "$whole" > "$out" 2>/dev/null; then
-                echo "decoded ${stem} $(wc -c < "$out") bytes"
-                rm -f "$whole"
-              else
-                echo "skip incomplete ${stem} whole"
-                rm -f "$out"
-              fi
+              src="$whole"
             elif ((${#parts[@]})); then
-              if cat "${parts[@]}" | base64 -d > "$out" 2>/dev/null; then
-                echo "decoded ${stem} $(wc -c < "$out") bytes"
-                rm -f "${parts[@]}"
-              else
-                echo "skip incomplete ${stem} parts (${#parts[@]})"
-                rm -f "$out"
-              fi
+              src="${parts[*]}"
+            else
+              return 0
             fi
-          done
+            if cat $src | tr -d '\n\r \t' | base64 -d > "$out" 2>/dev/null && [[ -s "$out" ]]; then
+              echo "decoded ${stem} $(wc -c < "$out") bytes"
+              rm -f $src
+            else
+              echo "skip incomplete ${stem}"
+              rm -f "$out"
+            fi
+          }
+          decode pack-tin
+          decode pack-range
+          decode use-pour
+          decode shelf-tins
       - uses: actions/configure-pages@v5
         with:
           enablement: true
