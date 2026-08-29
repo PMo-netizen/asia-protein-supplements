@@ -5,29 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Markets — Asia Protein Supplements</title>
     <meta name="description" content="Hong Kong first, then Singapore, Japan, and Korea. China via cross-border e-commerce as a beachhead. Why each market matters to a retailer or distributor." />
+    <meta property="og:title" content="Markets — Asia Protein Supplements" />
+    <meta property="og:description" content="Hong Kong first, then Singapore, Japan, and Korea. China via cross-border e-commerce as a beachhead. Why each market matters to a retailer or distributor." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#FBFBF9" />
     <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="src/styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Asia Protein Supplements",
+        "description": "Hong Kong company building a novel-ingredient protein line for Asian retail buyers and distributors.",
+        "areaServed": ["Hong Kong", "Singapore", "Japan", "South Korea", "China"],
+        "address": { "@type": "PostalAddress", "addressLocality": "Hong Kong", "addressCountry": "HK" }
+      }
+    </script>
   </head>
   <body>
     <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
+
     <header class="site-header">
       <div class="header-row">
         <a class="wordmark" href="index.html" aria-label="Asia Protein Supplements">
           <span class="mark" aria-hidden="true"></span>
-          <span class="wordmark-text"><strong>Asia Protein</strong><span>Supplements</span></span>
+          <span class="wordmark-text">
+            <strong>Asia Protein</strong>
+            <span>Supplements</span>
+          </span>
         </a>
         <div class="header-actions">
-          <div class="lang-toggle" role="group" aria-label="Language">
+          <div class="lang-toggle" role="group" aria-label="Language" data-i18n-aria="langGroup">
             <button type="button" id="lang-en" aria-pressed="true">EN</button>
             <button type="button" id="lang-zh" aria-pressed="false">繁</button>
           </div>
           <a class="btn btn-primary btn-header" href="intro.html" data-i18n="cta">Request an intro call</a>
         </div>
       </div>
-      <nav class="site-nav" aria-label="Primary">
+      <nav class="site-nav" aria-label="Primary" data-i18n-aria="navAria">
         <ul>
           <li><a href="index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="line.html" data-i18n="nav.line">The line</a></li>
@@ -38,7 +59,127 @@
         </ul>
       </nav>
     </header>
-    <main id="main"></main>
-    <p>See full markets.html on disk — placeholder if truncated</p>
+    <main id="main">
+      <header class="page-hero">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="markets.eyebrow">Markets</p>
+          <h1 data-i18n="markets.h1">Hong Kong first. Then the region. China as a channel.</h1>
+          <p class="lede" data-i18n="markets.lede">
+            We list where we can stand behind the pack. We do not ask a partner to carry a market we have not prepared. This is a commercial sequence — not a regulatory playbook, and not a timeline in months.
+          </p>
+        </div>
+      </header>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="markets.seqH">The sequence</p>
+          <p class="lede" data-i18n="markets.seq">
+            Hong Kong is the first market. Singapore, Japan, and Korea follow as the range is ready. Mainland China opens through cross-border e-commerce as a beachhead — a channel, not a claim that domestic registration is already in hand.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section-wash">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="markets.whyH">Why each market matters</p>
+          <div class="market-blocks">
+            <article class="market-block">
+              <span class="m-code">HK</span>
+              <div>
+                <p class="m-role" data-i18n="markets.hkRole">First market</p>
+                <h2 data-i18n="markets.hkH">Hong Kong</h2>
+                <p data-i18n="markets.hkP">The listing we will prove. Sold as food. Traditional Chinese and English on pack. A bilingual grocery and drugstore trade that already runs protein — and the shelf a regional partner can point to later.</p>
+                <p data-i18n="markets.hkWhy">For a retailer: a food-positioned line written for this city's labelling, not a translated import. For a distributor: a house that is already here, not a Western brand adding Asia as a later chapter.</p>
+              </div>
+            </article>
+            <article class="market-block">
+              <span class="m-code">SG</span>
+              <div>
+                <p class="m-role" data-i18n="markets.sgRole">Next</p>
+                <h2 data-i18n="markets.sgH">Singapore</h2>
+                <p data-i18n="markets.sgP">The same line, prepared for Singapore retail once Hong Kong is set. English-led labelling, a concentrated grocery trade, and buyers who already compare regional items.</p>
+                <p data-i18n="markets.sgWhy">For a retailer: a second listing that does not fight the first on pack or claim. For a distributor: a territory that can follow Hong Kong without waiting for a separate brand story.</p>
+              </div>
+            </article>
+            <article class="market-block">
+              <span class="m-code">JP</span>
+              <div>
+                <p class="m-role" data-i18n="markets.jpRole">Later</p>
+                <h2 data-i18n="markets.jpH">Japan</h2>
+                <p data-i18n="markets.jpP">Pack and claims written for the Japanese trade, not translated at the last mile. The protein set is already dense; we will not arrive with a generic English master and a hope.</p>
+                <p data-i18n="markets.jpWhy">For a retailer: copy that can sit in a Japanese set. For a distributor: a counterpart who will write for the market, rather than hand over a finished imported SKU.</p>
+              </div>
+            </article>
+            <article class="market-block">
+              <span class="m-code">KR</span>
+              <div>
+                <p class="m-role" data-i18n="markets.krRole">Later</p>
+                <h2 data-i18n="markets.krH">Korea</h2>
+                <p data-i18n="markets.krP">Same order of work: the range, then the market, then the conversation with local partners. Korea is not a copy of Japan, and we will not treat it as one.</p>
+                <p data-i18n="markets.krWhy">For a retailer: a line that arrives when the pack is ready for that trade. For a distributor: a named conversation, not a regional blanket.</p>
+              </div>
+            </article>
+            <article class="market-block">
+              <span class="m-code">CN</span>
+              <div>
+                <p class="m-role" data-i18n="markets.cnRole">Cross-border first</p>
+                <h2 data-i18n="markets.cnH">China</h2>
+                <p data-i18n="markets.cnP">Cross-border e-commerce as a beachhead — Tmall Global, JD Worldwide, and related platforms — while general trade remains a later discussion. A channel choice, not a domestic-registration claim.</p>
+                <p data-i18n="markets.cnWhy">For a platform or CBEC distributor: a line that can sit in the cross-border aisle. For anyone asking about general trade: we will say on the call that it is later, and we will not pretend otherwise.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="markets.notH">What this page is not</p>
+          <p class="lede" data-i18n="markets.notP">It is not a month-count, a consultant fee, or a lecture on registration routes. Those conversations, if they belong at all, belong after there is a commercial fit.</p>
+        </div>
+      </section>
+      <section class="section cta-band">
+        <div class="wrap">
+          <p class="eyebrow" data-i18n="band.eyebrow">Intro call</p>
+          <h2 data-i18n="band.h">A short conversation, if there is a fit.</h2>
+          <p class="lede" data-i18n="band.p">Name, company, market, and an email. We write back to arrange a time.</p>
+          <a class="btn btn-primary" href="intro.html" data-i18n="cta">Request an intro call</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-top">
+        <div>
+          <a class="wordmark wordmark-foot" href="index.html" aria-label="Asia Protein Supplements">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="wordmark-text">
+              <strong>Asia Protein</strong>
+              <span>Supplements</span>
+            </span>
+          </a>
+          <p class="footer-blurb" data-i18n="footer.blurb">Hong Kong. A protein line for the Asian trade.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer" data-i18n-aria="footerAria">
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="line.html" data-i18n="nav.line">The line</a>
+          <a href="partners.html" data-i18n="nav.partners">Partners</a>
+          <a href="markets.html" data-i18n="nav.markets" aria-current="page">Markets</a>
+          <a href="about.html" data-i18n="nav.about">About</a>
+          <a href="intro.html" data-i18n="nav.intro">Intro call</a>
+        </nav>
+      </div>
+      <div class="wrap">
+        <p class="footer-legal" data-i18n="footer.legal">
+          Food, not medicine. Asia Protein Supplements products are not intended to diagnose, treat, cure, or prevent disease. Sold as food in Hong Kong. This site is for trade enquiries and is not legal advice for any jurisdiction.
+        </p>
+        <div class="footer-meta">
+          <span data-i18n="footer.copy">Asia Protein Supplements · Hong Kong</span>
+          <span data-i18n="footer.made">Traditional Chinese + English · Food · Trade</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="src/app.js"></script>
   </body>
 </html>
